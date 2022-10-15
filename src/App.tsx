@@ -17,14 +17,12 @@ type Book = {
 }
 
 function App() {
-  const { data: { books } = {} } = useQuery(FETCH_BOOKS);
-
-  console.log(useQuery(FETCH_BOOKS));
+  const { data: { books = [] } = {} } = useQuery(FETCH_BOOKS);
 
   return <div>
-    {books.map((book: Book) => {
+    {books.map((book: Book) => (
       <div key={book.id}>{book.title}</div>
-    })}
+    ))}
   </div>
 }
 
